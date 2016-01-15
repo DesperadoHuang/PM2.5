@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PM2.5</string>
+    <string name="pm25_URL"></string>
+</resources>
