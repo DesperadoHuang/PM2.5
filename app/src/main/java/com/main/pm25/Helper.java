@@ -16,6 +16,8 @@ import java.util.ArrayList;
  * Created by WilsonHuang on 2016/1/15.
  */
 public class Helper {
+    private static final String TAG = "debug";
+    private static final boolean OPEN_DEBUG = true;
     public static final String PM25URL = " http://opendata.epa.gov.tw/ws/Data/REWXQA/" +
             "?$select=SiteName,County,PM2.5,PublishTime&$orderby=SiteName&$skip=0&$top=1000&format=json&sort=County";
 
@@ -40,7 +42,7 @@ public class Helper {
         ArrayList<PM25Item> pm25Items = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
-            Log.i("debug", jsonArray.toString());
+            myLog(jsonArray.toString());
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String siteName = jsonObject.optString("SiteName");
@@ -62,5 +64,9 @@ public class Helper {
         return pm25Items;
     }
 
+    public static void myLog(String message) {
+        if (OPEN_DEBUG)
+            Log.i(TAG, message);
+    }
 
 }
