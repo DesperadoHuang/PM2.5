@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PM2.5</string>
-    <string name="pm25_URL"></string>
+    <string name="siteName">觀測站名稱</string>
+    <string name="county">縣市</string>
+    <string name="pm25Value">PM2.5</string>
+    <string name="publishTime">發佈時間</string>
 </resources>

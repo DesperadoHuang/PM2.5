@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:gravity="center_horizontal"
-            android:text="觀測站名稱"
+            android:text="@string/siteName"
             android:textColor="#ffffff"/>
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="center_horizontal"
-            android:text="縣市"
+            android:text="@string/county"
             android:textColor="#ffffff"/>
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="center_horizontal"
-            android:text="PM2.5"
+            android:text="@string/pm25Value"
             android:textColor="#ffffff"
             />
 
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:gravity="center_horizontal"
-            android:text="發布時間"
+            android:text="@string/publishTime"
             android:textColor="#ffffff"
             />
     </LinearLayout>

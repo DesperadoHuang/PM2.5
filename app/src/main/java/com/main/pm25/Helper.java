@@ -37,7 +37,7 @@ public class Helper {
     }
 
     public static ArrayList<PM25Item> getPm25Items(String jsonString) {
-        ArrayList<PM25Item> pm25Items = new ArrayList<PM25Item>();
+        ArrayList<PM25Item> pm25Items = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
             Log.i("debug", jsonArray.toString());

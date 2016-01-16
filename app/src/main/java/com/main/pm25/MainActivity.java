@@ -12,12 +12,6 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
     private ListView listView;
 
-    private ArrayList<PM25Item> itemList;
-    private PM25ItemAdapter pm25ItemAdapter;
-
-    public static final String PM25URL = "http://opendata.epa.gov.tw/ws/Data/REWXQA/" +
-            "?$select=SiteName,County,PM2.5,PublishTime&$orderby=SiteName&$skip=0&$top=1000&format=json&sort=County";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
