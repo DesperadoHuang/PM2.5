@@ -19,6 +19,7 @@ public class PM25Item {
         this.publishTime = publishTime;
     }
 
+
     public String getSiteName() {
         return siteName;
     }

@@ -1,13 +1,14 @@
 package com.main.pm25;
 
-import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private Context context;
     private ListView listView;
 
@@ -24,22 +25,32 @@ public class MainActivity extends Activity {
         context = this;
         listView = (ListView) findViewById(R.id.data_ListView);
 
-        //        PM25Item pm25Item1 = new PM25Item("第一站", "台北", "1", "AAA");
-        //        PM25Item pm25Item2 = new PM25Item("第二站", "台中", "2", "BBB");
-        //        PM25Item pm25Item3 = new PM25Item("第三站", "高雄", "3", "CCC");
-        //
-        //        itemList = new ArrayList<PM25Item>();
-        //        itemList.add(pm25Item1);
-        //        itemList.add(pm25Item2);
-        //        itemList.add(pm25Item3);
-
-
-        //        pm25ItemAdapter = new PM25ItemAdapter(context, itemList);
-        //
-        //        listView.setAdapter(pm25ItemAdapter);
-
-
+        new MyAsyncTask().execute();
     }
 
+    private class MyAsyncTask extends AsyncTask<Void, Integer, String> {
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
 
+        @Override
+        protected String doInBackground(Void... params) {
+            String jsonString = null;
+            try {
+                jsonString = Helper.getJsonString(Helper.PM25URL);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return jsonString;
+        }
+
+        @Override
+        protected void onPostExecute(String jsonString) {
+            ArrayList<PM25Item> itemList = Helper.getPm25Items(jsonString);
+            PM25ItemAdapter pm25ItemAdapter = new PM25ItemAdapter(context, itemList);
+            listView.setAdapter(pm25ItemAdapter);
+            super.onPostExecute(jsonString);
+        }
+    }
 }

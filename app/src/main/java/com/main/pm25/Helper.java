@@ -20,7 +20,7 @@ public class Helper {
             "?$select=SiteName,County,PM2.5,PublishTime&$orderby=SiteName&$skip=0&$top=1000&format=json&sort=County";
 
 
-    private String getJsonString(String urlString) throws Exception {
+    public static String getJsonString(String urlString) throws Exception {
         InputStream is = null;
         Reader reader = null;
         StringBuilder str = new StringBuilder();
@@ -36,7 +36,7 @@ public class Helper {
         return str.toString();
     }
 
-    private ArrayList<PM25Item> getPm25Items(String jsonString) {
+    public static ArrayList<PM25Item> getPm25Items(String jsonString) {
         ArrayList<PM25Item> pm25Items = new ArrayList<PM25Item>();
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
@@ -45,9 +45,16 @@ public class Helper {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String siteName = jsonObject.optString("SiteName");
                 String county = jsonObject.optString("County");
-                String pm25value = jsonObject.optString("PM2.5");
+                String pm25value = jsonObject.optString("PM2.5").equals("")
+                        ? String.valueOf(0) : jsonObject.optString("PM2.5");
                 String publishTime = jsonObject.optString("PublishTime");
-                pm25Items.add(new PM25Item(siteName, county, pm25value, publishTime));
+
+                pm25Items.add(new PM25Item(
+                        siteName,
+                        county,
+                        pm25value,
+                        publishTime));
+
             }
         } catch (Exception e) {
             e.printStackTrace();

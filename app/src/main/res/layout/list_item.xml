@@ -7,36 +7,36 @@
     <TextView
         android:id="@+id/text_stationName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="3"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:padding="8dp"
         android:text="名稱"/>
 
     <TextView
         android:id="@+id/text_country"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="2"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:padding="8dp"
         android:text="縣市"/>
 
     <TextView
         android:id="@+id/text_PM_value"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="2"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:padding="8dp"
         android:text="PM2.5"/>
 
     <TextView
         android:id="@+id/text_release_time"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="4"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:padding="8dp"
         android:text="發布時間"/>
 </LinearLayout>

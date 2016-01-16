@@ -1,6 +1,7 @@
 package com.main.pm25;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,24 +61,37 @@ public class PM25ItemAdapter extends BaseAdapter {
         holder.publishTime.setBackgroundResource(R.drawable.frame_line);
 
         int pm25Value = Integer.parseInt(item.getPMvalue());
-        if (pm25Value == 1) {
-            convertView.setBackgroundColor(context.getResources().getColor(R.color.pm25_1to35));
-            holder.siteName.setTextColor(context.getResources().getColor(R.color.text_black));
-            holder.country.setTextColor(context.getResources().getColor(R.color.text_black));
-            holder.PMvalue.setTextColor(context.getResources().getColor(R.color.text_black));
-            holder.publishTime.setTextColor(context.getResources().getColor(R.color.text_black));
-        } else if (pm25Value == 2) {
-            convertView.setBackgroundColor(context.getResources().getColor(R.color.pm25_36to53));
-            holder.siteName.setTextColor(context.getResources().getColor(R.color.text_black));
-            holder.country.setTextColor(context.getResources().getColor(R.color.text_black));
-            holder.PMvalue.setTextColor(context.getResources().getColor(R.color.text_black));
-            holder.publishTime.setTextColor(context.getResources().getColor(R.color.text_black));
-        } else if (pm25Value == 3) {
-            convertView.setBackgroundColor(context.getResources().getColor(R.color.pm25_54to70));
-            holder.siteName.setTextColor(context.getResources().getColor(R.color.text_white));
-            holder.country.setTextColor(context.getResources().getColor(R.color.text_white));
-            holder.PMvalue.setTextColor(context.getResources().getColor(R.color.text_white));
-            holder.publishTime.setTextColor(context.getResources().getColor(R.color.text_white));
+        if (pm25Value == 0) {
+            convertView.setBackgroundColor(ContextCompat.getColor(context, R.color.pm25_0));
+            holder.siteName.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+            holder.country.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+            holder.PMvalue.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+            holder.PMvalue.setText("維護中");
+            holder.publishTime.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+        } else if (pm25Value > 0 && pm25Value <= 35) {
+            convertView.setBackgroundColor(ContextCompat.getColor(context, R.color.pm25_1to35));
+            holder.siteName.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+            holder.country.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+            holder.PMvalue.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+            holder.publishTime.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+        } else if (pm25Value > 35 && pm25Value <= 53) {
+            convertView.setBackgroundColor(ContextCompat.getColor(context, R.color.pm25_36to53));
+            holder.siteName.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+            holder.country.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+            holder.PMvalue.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+            holder.publishTime.setTextColor(ContextCompat.getColor(context, R.color.text_black));
+        } else if (pm25Value > 53 && pm25Value <= 70) {
+            convertView.setBackgroundColor(ContextCompat.getColor(context, R.color.pm25_54to70));
+            holder.siteName.setTextColor(ContextCompat.getColor(context, R.color.text_white));
+            holder.country.setTextColor(ContextCompat.getColor(context, R.color.text_white));
+            holder.PMvalue.setTextColor(ContextCompat.getColor(context, R.color.text_white));
+            holder.publishTime.setTextColor(ContextCompat.getColor(context, R.color.text_white));
+        } else if (pm25Value > 70) {
+            convertView.setBackgroundColor(ContextCompat.getColor(context, R.color.pm25_70up));
+            holder.siteName.setTextColor(ContextCompat.getColor(context, R.color.text_white));
+            holder.country.setTextColor(ContextCompat.getColor(context, R.color.text_white));
+            holder.PMvalue.setTextColor(ContextCompat.getColor(context, R.color.text_white));
+            holder.publishTime.setTextColor(ContextCompat.getColor(context, R.color.text_white));
         }
         return convertView;
     }
