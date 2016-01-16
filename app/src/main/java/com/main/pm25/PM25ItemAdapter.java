@@ -49,16 +49,17 @@ public class PM25ItemAdapter extends BaseAdapter {
         }
 
         PM25Item item = arrayList.get(position);
-        int pm25Value = item.getPMvalue();
+
         holder.siteName.setText(item.getSiteName());
         holder.siteName.setBackgroundResource(R.drawable.frame_line);
-        holder.country.setText(item.getCountry());
+        holder.country.setText(item.getCounty());
         holder.country.setBackgroundResource(R.drawable.frame_line);
-        holder.PMvalue.setText(String.valueOf(pm25Value));
+        holder.PMvalue.setText(item.getPMvalue());
         holder.PMvalue.setBackgroundResource(R.drawable.frame_line);
         holder.publishTime.setText(item.getPublishTime());
         holder.publishTime.setBackgroundResource(R.drawable.frame_line);
 
+        int pm25Value = Integer.parseInt(item.getPMvalue());
         if (pm25Value == 1) {
             convertView.setBackgroundColor(context.getResources().getColor(R.color.pm25_1to35));
             holder.siteName.setTextColor(context.getResources().getColor(R.color.text_black));

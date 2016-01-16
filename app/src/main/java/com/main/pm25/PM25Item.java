@@ -5,18 +5,18 @@ package com.main.pm25;
  */
 public class PM25Item {
     private String siteName;
-    private String country;
-    private int PMvalue;
+    private String county;
+    private String PMvalue;
     private String publishTime;
 
     public PM25Item() {
     }
 
-    public PM25Item(String observatoryName, String country, int PMvalue, String releaseTime) {
-        this.siteName = observatoryName;
-        this.country = country;
+    public PM25Item(String siteName, String county, String PMvalue, String publishTime) {
+        this.siteName = siteName;
+        this.county = county;
         this.PMvalue = PMvalue;
-        this.publishTime = releaseTime;
+        this.publishTime = publishTime;
     }
 
     public String getSiteName() {
@@ -27,19 +27,19 @@ public class PM25Item {
         this.siteName = siteName;
     }
 
-    public String getCountry() {
-        return country;
+    public String getCounty() {
+        return county;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCounty(String county) {
+        this.county = county;
     }
 
-    public int getPMvalue() {
+    public String getPMvalue() {
         return PMvalue;
     }
 
-    public void setPMvalue(int PMvalue) {
+    public void setPMvalue(String PMvalue) {
         this.PMvalue = PMvalue;
     }
 

@@ -24,18 +24,19 @@ public class MainActivity extends Activity {
         context = this;
         listView = (ListView) findViewById(R.id.data_ListView);
 
-        PM25Item pm25Item1 = new PM25Item("第一站", "台北", 1, "AAA");
-        PM25Item pm25Item2 = new PM25Item("第二站", "台中", 2, "BBB");
-        PM25Item pm25Item3 = new PM25Item("第三站", "高雄", 3, "CCC");
+        //        PM25Item pm25Item1 = new PM25Item("第一站", "台北", "1", "AAA");
+        //        PM25Item pm25Item2 = new PM25Item("第二站", "台中", "2", "BBB");
+        //        PM25Item pm25Item3 = new PM25Item("第三站", "高雄", "3", "CCC");
+        //
+        //        itemList = new ArrayList<PM25Item>();
+        //        itemList.add(pm25Item1);
+        //        itemList.add(pm25Item2);
+        //        itemList.add(pm25Item3);
 
-        itemList = new ArrayList<PM25Item>();
-        itemList.add(pm25Item1);
-        itemList.add(pm25Item2);
-        itemList.add(pm25Item3);
 
-        pm25ItemAdapter = new PM25ItemAdapter(context, itemList);
-
-        listView.setAdapter(pm25ItemAdapter);
+        //        pm25ItemAdapter = new PM25ItemAdapter(context, itemList);
+        //
+        //        listView.setAdapter(pm25ItemAdapter);
 
 
     }

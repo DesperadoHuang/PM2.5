@@ -1,5 +1,7 @@
 package com.main.pm25;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,9 +19,8 @@ public class Helper {
     public static final String PM25URL = " http://opendata.epa.gov.tw/ws/Data/REWXQA/" +
             "?$select=SiteName,County,PM2.5,PublishTime&$orderby=SiteName&$skip=0&$top=1000&format=json&sort=County";
 
-    private ArrayList<PM25Item> pm25Items;
 
-    public static String getJsonString(String urlString) throws Exception {
+    private String getJsonString(String urlString) throws Exception {
         InputStream is = null;
         Reader reader = null;
         StringBuilder str = new StringBuilder();
@@ -35,13 +36,24 @@ public class Helper {
         return str.toString();
     }
 
-    public ArrayList<PM25Item> getPm25Items() {
+    private ArrayList<PM25Item> getPm25Items(String jsonString) {
+        ArrayList<PM25Item> pm25Items = new ArrayList<PM25Item>();
         try {
-            JSONArray siteName = new JSONObject(getJsonString(PM25URL)).getJSONArray("SiteName");
-            JSONArray country = new JSONObject(getJsonString(PM25URL)).getJSONArray("Country");
+            JSONArray jsonArray = new JSONArray(jsonString);
+            Log.i("debug", jsonArray.toString());
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String siteName = jsonObject.optString("SiteName");
+                String county = jsonObject.optString("County");
+                String pm25value = jsonObject.optString("PM2.5");
+                String publishTime = jsonObject.optString("PublishTime");
+                pm25Items.add(new PM25Item(siteName, county, pm25value, publishTime));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return pm25Items;
     }
+
+
 }
