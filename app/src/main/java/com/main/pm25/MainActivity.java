@@ -43,12 +43,13 @@ public class MainActivity extends AppCompatActivity {
             try {
                 jsonString = Helper.getJsonString(Helper.PM25URL);
             } catch (Exception e) {
-                e.printStackTrace();
+                Helper.myLog(e.toString());
+                dialog.dismiss();
             }
             return jsonString;
         }
 
-        //結束
+        //執行結束
         @Override
         protected void onPostExecute(String jsonString) {
             Helper.myLog("onPostExecute");
